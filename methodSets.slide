@@ -1,0 +1,34 @@
+Method SetsとMethod Calls
+入門Go言語仕様輪読会
+20:00 15 Apr 2021
+
+task4233
+@task4233
+
+* 自己紹介
+
+*task4233*(Takashi*MIMA)*
+
+趣味と実益を兼ねてGoを書いています
+
+.link https://go-review.googlesource.com/c/go/+/288472 Go本体へのコントリビュート経験があります
+
+.image ./images/go-proposal.PNG 400 682
+
+* 本日話すこと、話さないこと
+
+*話すこと*
+
+- 本日の目標
+- Function(関数)とMethod(メソッド)にどのような関係があるのか
+- Method setsとは何か
+- Method setsの利用例
+
+* 本日の目標
+下記の4つのMethod Callsが実行できるのか、実行できる/できないのは何故なのかを理解すること
+
+.play ./examples/goal.go
+
+* function(関数)とMethod(メソッド)にどのような関係があるのか
+
+*Method(メソッド)はレシーバ(receiver)を持つFunction(関数)のことである*
