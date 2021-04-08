@@ -1,4 +1,4 @@
-Method SetsとMethod Calls
+Goクイズで学ぶMethod sets
 入門Go言語仕様輪読会
 20:00 15 Apr 2021
 
@@ -15,20 +15,62 @@ task4233
 
 .image ./images/go-proposal.PNG 400 682
 
-* 本日話すこと、話さないこと
+* ゴールとアジェンダ
+*ゴール*
+Goのメソッド呼び出しに用いられる概念であるメソッドセットを理解すること
 
-*話すこと*
+*アジェンダ*
+- メソッドに関するおさらい
+- 本日理解していただくGoクイズの出題
+- Goクイズに関するMethod Setsの説明
+- まとめのGoクイズの出題
 
-- 本日の目標
-- Function(関数)とMethod(メソッド)にどのような関係があるのか
-- Method setsとは何か
-- Method setsの利用例
+* メソッドセットが理解できると何が嬉しいのか
+- Goの仕様を理解する助けになる
+  - 特にMethod callsやInterface typesにおける実装の部分
+- Goを使用する際にメソッドがメモリ管理している
 
-* 本日の目標
-下記の4つのMethod Callsが実行できるのか、実行できる/できないのは何故なのかを理解すること
+* おさらい：メソッドとは
 
-.play ./examples/goal.go
+defined typeかdefined typeを指すポインタを、メソッドのレシーバとして持つ関数
 
-* function(関数)とMethod(メソッド)にどのような関係があるのか
+.play ./examples/method.go
 
-*Method(メソッド)はレシーバ(receiver)を持つFunction(関数)のことである*
+* 2種類のレシーバ：ポインタレシーバと値レシーバ
+
+ポインタレシーバとは、ポインタ型のレシーバのこと
+値レシーバとは、値型のレシーバのこと
+
+.play ./examples/method2.go
+
+* ポインタレシーバと値レシーバでなぜ結果が変わるのか
+値レシーバはレシーバの値をコピーして呼び出すのに対し、
+ポインタレシーバは値が格納されているアドレスを保持しているため
+
+* Goクイズ1
+
+1. compile error(コンパイル時エラー)
+2. run-time panic(実行時エラー)
+3. 0
+4. 3
+
+.play ./examples/quiz1.go
+
+* Goクイズ2
+
+1. compile error(コンパイル時エラー)
+2. run-time panic(実行時エラー)
+3. [2 3 5]
+4. [2 3 5 57]
+
+.play ./examples/quiz2.go
+
+* Goクイズ3
+
+1. compile error(コンパイル時エラー)
+2. run-time panic(実行時エラー)
+3. true
+4. false
+
+.play ./examples/quiz3.go
+
