@@ -2,17 +2,18 @@ package main
 
 import "fmt"
 
-type List []int
+type error interface {
+	Error() string
+}
 
-func (l List) Len() int { return len(l) }
+type EmptyError struct {
+	FieldName string
+}
 
-// []intはdefined typeではないので、レシーバにはできない
-// func (l []int) Len() int { return len(l)}
+func (e EmptyError) Error() string {
+	return fmt.Sprintf("%s is not found", e.FieldName)
+}
 
 func main() {
-	l := List{1, 3, 5}
-
-	fmt.Println(l.Len())
-	// 第一引数にレシーバを渡しても呼び出せる
-	fmt.Println(List.Len(l))
+	var _ error = EmptyError{}
 }

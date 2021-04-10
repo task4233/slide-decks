@@ -82,7 +82,7 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 * コラム: 空のインタフェースへの代入
 
-.play ./examples/empty_interface/example.go
+.play ./examples/column/empty_interface.go
 
 * Goクイズ - methodの実装
 
@@ -90,7 +90,7 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 * コラム: インタフェースの実装
 
-.play ./examples/check_implemented.go
+.play ./examples/column/check_implemented.go
 
 
 Errorメソッドを実装しているのでOK
