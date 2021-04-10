@@ -1,5 +1,4 @@
 Goクイズで学ぶメソッドセット
-～interfaceの「実装する」という概念を理解する～
 
 Go言語仕様輪読会
 2021/04/15
@@ -19,8 +18,7 @@ task4233
 
 * ゴールと理解するメリット
 *ゴール*
-Goにおける *interfaceを「実装する」* という概念を通して、
-*メソッドセットとは何なのか理解する*
+interfaceを「実装する」という概念を通して、*メソッドセットとは何なのか理解する*
 
 *メリット*
 Goの仕様を理解する助けになる
@@ -37,19 +35,20 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 - ポインタレシーバとは、ポインタ型のレシーバのこと(参照渡し)
 - 値レシーバとは、値型のレシーバのこと(値渡し)
 
-.play ./examples/method2.go
-
-* コラム: ポインタレシーバと値レシーバのメモリ利用
-値レシーバはレシーバの値をコピーして呼び出すのに対し、
-ポインタレシーバは値が格納されているアドレスを保持しているため
+.play ./examples/base/methods.go
 
 * メソッドセットとは
 
 メソッドセットは、型に関連付けられたメソッドの集合のこと
 
-* 型 `T` がinterface `I` を「実装する」とは
+.play ./examples/base/method_sets.go
+
+* 型Tがinterface Iを「実装する」とは
 
 型 `T` がinterface `I` のメソッドセットを全て含むこと
+
+
+(ここにmethod sets of I ⊂ method sets of `T`の包含関係を示す図が入る)
 
 * メソッドセットの詳細な定義
 
@@ -63,29 +62,20 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 - それ以外の型は、空のメソッドセットを持つ
 
-* 空のインタフェース
+* interface型のメソッドセット
 
-.play ./examples/empty_interface/example.go
+.play ./examples/interface/example.go
 
-* Goクイズ - 空のinterface
+* Goクイズ - interface型のメソッドセット
 
-1. compile error
-2. run-time panic
-3. exit with code 0 (正常終了)
+.play ./examples/interface/quiz.go
 
-.play ./examples/empty_interface/quiz.go
+* interface型のメソッドセット - 解答と解説
 
-* 空のinterface - 解答と解説
+- 返り値が異なっているのでメソッドセットが異なるから実装していない
+- 仮引数リストが異なる場合も同様
 
-- `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
-
-- 空のインタフェースは何もメソッドを含まないので、全ての値を代入可能
-
-.play ./examples/empty_interface/answer.go
-
-* コラム: 空のインタフェースへの代入
-
-.play ./examples/column/empty_interface.go
+.play ./examples/interface/answer.go
 
 * 値レシーバに関するinterfaceの実装
 
@@ -118,6 +108,38 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 .play ./examples/pointer_receiver/answer.go
 
-* コラム: インタフェースの実装
+* コラム: interfaceの実装
 
 .play ./examples/column/check_implemented.go
+
+* 空のinterface
+
+.play ./examples/empty_interface/example.go
+
+* Goクイズ - 空のinterface
+
+.play ./examples/empty_interface/quiz.go
+
+* 空のinterface - 解答と解説
+
+- `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
+
+- 空のinterfaceは何もメソッドを含まないので、全ての値を代入可能
+
+.play ./examples/empty_interface/answer.go
+
+* コラム: 空のinterfaceへの代入
+
+.play ./examples/column/empty_interface.go
+
+* まとめ
+
+- interface型のメソッドセットは、そのinterface定義
+
+- 型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドセット
+
+- 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドセット
+
+- 埋め込み型については、更なる規則が適用される(今回は時間が足りないので割愛)
+
+- それ以外の型は、空のメソッドセットを持つ
