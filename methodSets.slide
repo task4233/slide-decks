@@ -1,6 +1,8 @@
-Goクイズで学ぶMethod sets
-入門Go言語仕様輪読会
-20:00 15 Apr 2021
+Goクイズで学ぶメソッドセット
+～interfaceの「実装する」という概念を理解する～
+
+Go言語仕様輪読会
+2021/04/15
 
 task4233
 @task4233
@@ -15,44 +17,41 @@ task4233
 
 .image ./images/go-proposal.PNG 400 682
 
-* ゴールとアジェンダ
+* ゴールと理解するメリット
 *ゴール*
-Goにおけるinterfaceの「実装」に利用されるメソッドセットを理解すること
+Goにおける *interfaceを「実装する」* という概念を通して、
+*メソッドセットとは何なのか理解する*
 
-*アジェンダ*
-- メソッドに関するおさらい
-- interfaceに関するおさらい
-- 本日理解していただくGoクイズの出題
-- Goクイズに関するMethod Setsの説明
-- まとめのGoクイズの出題
-
-* メソッドセットが理解できると何が嬉しいのか
+*メリット*
 Goの仕様を理解する助けになる
-
-- 特にMethod callsやInterface typesにおける実装の部分
-
-Goを使用する際にメソッドがメモリ管理している
+(特にMethod callsやInterface typesにおける実装の部分)
 
 * おさらい：メソッドとは
 
 defined typeかdefined typeを指すポインタを、メソッドのレシーバとして持つ関数
 
-.play ./examples/method.go
+.image ./images/method_dif.PNG 400 775
 
 * 2種類のレシーバ：ポインタレシーバと値レシーバ
 
-ポインタレシーバとは、ポインタ型のレシーバのこと
-値レシーバとは、値型のレシーバのこと
+- ポインタレシーバとは、ポインタ型のレシーバのこと(参照渡し)
+- 値レシーバとは、値型のレシーバのこと(値渡し)
 
 .play ./examples/method2.go
 
-* コラム: ポインタレシーバと値レシーバでなぜ結果が変わるのか
+* コラム: ポインタレシーバと値レシーバのメモリ利用
 値レシーバはレシーバの値をコピーして呼び出すのに対し、
 ポインタレシーバは値が格納されているアドレスを保持しているため
 
 * メソッドセットとは
 
 メソッドセットは、型に関連付けられたメソッドの集合のこと
+
+* 型 `T` がinterface `I` を「実装する」とは
+
+型 `T` がinterface `I` のメソッドセットを全て含むこと
+
+* メソッドセットの詳細な定義
 
 - interface型のメソッドセットは、そのinterface定義
 
@@ -63,6 +62,10 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 - 埋め込み型については、更なる規則が適用される(今回は時間が足りないので割愛)
 
 - それ以外の型は、空のメソッドセットを持つ
+
+* 空のインタフェース
+
+.play ./examples/empty_interface/example.go
 
 * Goクイズ - 空のinterface
 
@@ -84,27 +87,37 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 .play ./examples/column/empty_interface.go
 
-* Goクイズ - methodの実装
+* 値レシーバに関するinterfaceの実装
 
+.play ./examples/value_receiver/example.go
 
+* Goクイズ - 値レシーバに関するinterfaceの実装
+
+.play ./examples/value_receiver/quiz.go
+
+* 値レシーバに関するinterfaceの実装 - 解答と解説
+
+.play ./examples/value_receiver/answer.go
+
+* コラム: メソッド呼び出し時の特別ルール
+x.m()というメソッド呼び出しは、xがaddressableで&xのメソッドセットがmを含んでいる場合、x.m()は(&x).m()の省略形になる
+
+.link https://golang.org/ref/spec#Address_operators Addressable
+
+.play ./examples/column/method_call.go
+
+* ポインタレシーバに関するinterfaceの実装
+
+.play ./examples/pointer_receiver/example.go
+
+* Goクイズ - ポインタレシーバに関するinterfaceの実装
+
+.play ./examples/pointer_receiver/quiz.go
+
+* ポインタレシーバに関するinterfaceの実装 - 解答と解説
+
+.play ./examples/pointer_receiver/answer.go
 
 * コラム: インタフェースの実装
 
 .play ./examples/column/check_implemented.go
-
-
-Errorメソッドを実装しているのでOK
-
-
-Errorメソッドのレシーバの型が、代入しようとしている型と異なるのでNG
-https://play.golang.org/p/xpDMhK21fe0
-
-同じ型にすればおｋ
-https://play.golang.org/p/YwdF-e4RqC4
-
-レシーバの型が *error 型なら、 error型のメソッドセットも含むのでOK
-https://play.golang.org/p/bA-0hptxZuh
-
-レシーバの型が *error 型なら、 *error型のメソッドセットも含むのでOK
-https://play.golang.org/p/YwdF-e4RqC4
-
