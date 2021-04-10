@@ -17,10 +17,11 @@ task4233
 
 * ゴールとアジェンダ
 *ゴール*
-Goのメソッド呼び出しに用いられる概念であるメソッドセットを理解すること
+Goにおけるinterfaceの「実装」に利用されるメソッドセットを理解すること
 
 *アジェンダ*
 - メソッドに関するおさらい
+- interfaceに関するおさらい
 - 本日理解していただくGoクイズの出題
 - Goクイズに関するMethod Setsの説明
 - まとめのGoクイズの出題
@@ -45,48 +46,65 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 .play ./examples/method2.go
 
-* ポインタレシーバと値レシーバでなぜ結果が変わるのか
+* コラム: ポインタレシーバと値レシーバでなぜ結果が変わるのか
 値レシーバはレシーバの値をコピーして呼び出すのに対し、
 ポインタレシーバは値が格納されているアドレスを保持しているため
 
-* Goクイズ1
-
-1. compile error(コンパイル時エラー)
-2. run-time panic(実行時エラー)
-3. 0
-4. 3
-
-.play ./examples/quiz1.go
-
-* Goクイズ2
-
-1. compile error(コンパイル時エラー)
-2. run-time panic(実行時エラー)
-3. [2 3 5]
-4. [2 3 5 57]
-
-.play ./examples/quiz2.go
-
-* Goクイズ3
-
-1. compile error(コンパイル時エラー)
-2. run-time panic(実行時エラー)
-3. true
-4. false
-
-.play ./examples/quiz3.go
-
-* メソッド呼び出しが有効になる条件
-
-`x.m()` というメソッド呼び出しについて、下記の条件を両方満たすこと
-
-- `x` 型のメソッドセットに `m` が含まれること
-
-- 引数リストが `m` の仮引数リストに代入可能なこと
-
 * メソッドセットとは
 
-- メソッドセットは、型に関連付けられたメソッド集合
+メソッドセットは、型に関連付けられたメソッドの集合のこと
 
-- ある型のメソッドセットは、 *その型を実装するinterface* と *その型のレシーバを用いて呼び出すことができるメソッド* によって決定する
+- interface型のメソッドセットは、そのinterface定義
+
+- 型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドセット
+
+- 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドセット
+
+- 埋め込み型については、更なる規則が適用される(今回は時間が足りないので割愛)
+
+- それ以外の型は、空のメソッドセットを持つ
+
+* Goクイズ - 空のinterface
+
+1. compile error
+2. run-time panic
+3. exit with code 0 (正常終了)
+
+.play ./examples/empty_interface/quiz.go
+
+* 空のinterface - 解答と解説
+
+- `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
+
+- 空のインタフェースは何もメソッドを含まないので、全ての値を代入可能
+
+.play ./examples/empty_interface/answer.go
+
+* コラム: 空のインタフェースへの代入
+
+.play ./examples/empty_interface/example.go
+
+* Goクイズ - methodの実装
+
+
+
+* コラム: インタフェースの実装
+
+.play ./examples/check_implemented.go
+
+
+Errorメソッドを実装しているのでOK
+
+
+Errorメソッドのレシーバの型が、代入しようとしている型と異なるのでNG
+https://play.golang.org/p/xpDMhK21fe0
+
+同じ型にすればおｋ
+https://play.golang.org/p/YwdF-e4RqC4
+
+レシーバの型が *error 型なら、 error型のメソッドセットも含むのでOK
+https://play.golang.org/p/bA-0hptxZuh
+
+レシーバの型が *error 型なら、 *error型のメソッドセットも含むのでOK
+https://play.golang.org/p/YwdF-e4RqC4
 
