@@ -2,17 +2,17 @@ package main
 
 import "fmt"
 
-type List []int
+type Num int
 
-func (l List) AppendWithValueReceiver(num int) { l = append(l, num) }
+func (num Num) addOneWithValue() { num++ }
 
-func (l *List) AppendWithPointerReceiver(num int) { *l = append(*l, num) }
+func (num *Num) addOneWithPointer() { *num++ }
 
 func main() {
-	l := List{1, 3, 5}
-	l.AppendWithValueReceiver(7)
-	fmt.Println(l)
+	num := Num(2)
+	num.addOneWithValue()
+	fmt.Println(num)
 
-	l.AppendWithPointerReceiver(7)
-	fmt.Println(l)
+	num.addOneWithPointer()
+	fmt.Println(num)
 }
