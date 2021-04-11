@@ -5,10 +5,10 @@ func main() {
 
 	var Num interface{} = -1
 
-	// 型が異なるので実装できない
+	// Numと1の型が異なるのでinvalidな式の評価になる
 	// var _ int = Num + 1
 
-	// Underlying typeが異なるのでCoversionできない
+	// intとNumのUnderlying typeが異なるのでCoversionできない
 	// var _ int = int(Num) + 1
 
 	// type assertionすればOK
