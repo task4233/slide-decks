@@ -2,7 +2,7 @@ package main_test
 
 import "context"
 
-// UserRepository がUserUseCaseを実装していることをコンパイル時に保証する
+// *UserUseCase型がUserUsecase interfaceを実装していることをコンパイル時に保証する
 var _ UserRepository = (*UserUseCase)(nil)
 
 type UserRepository interface {
