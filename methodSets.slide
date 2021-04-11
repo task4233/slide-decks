@@ -26,7 +26,7 @@ Goの仕様を理解する助けになる
 
 * おさらい：メソッドとは
 
-defined typeかdefined typeを指すポインタを、メソッドのレシーバとして持つ関数
+レシーバを持つ関数。レシーバになれるのは、defined typeかdefined typeのポインタ型。
 
 .image ./images/method_dif.PNG 400 775
 
