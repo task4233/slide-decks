@@ -12,6 +12,6 @@ func (Cat) MakeSound() string {
 }
 
 func main() {
-	// Cat型はAnimalインタフェースを実装している
+	// Cat型はAnimal interfaceを実装している
 	var _ Animal = Cat{}
 }
