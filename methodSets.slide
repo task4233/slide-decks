@@ -52,7 +52,7 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 * メソッドセットの詳細な定義
 
-- interface型のメソッドセットは、そのinterface定義
+- interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
 
 - 型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドセット
 
