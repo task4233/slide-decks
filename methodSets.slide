@@ -45,7 +45,7 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 * 型Tがinterface Iを「実装する」とは
 
-型 `T` がinterface `I` のメソッドセットを全て含むこと
+型 `T` のメソッドセットがinterface `I` のメソッドセットを全て含むこと
 
 
 (ここにmethod sets of I ⊂ method sets of `T`の包含関係を示す図が入る)
