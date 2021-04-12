@@ -43,13 +43,6 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 .play ./examples/base/method_sets.go
 
-* 型Tがinterface Iを「実装する」とは
-
-型 `T` のメソッドセットがinterface `I` のメソッドセットを全て含むこと
-
-
-(ここにmethod sets of I ⊂ method sets of `T`の包含関係を示す図が入る)
-
 * メソッドセットの詳細な定義
 
 - interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
@@ -61,6 +54,12 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 - 埋め込み型については、更なる規則が適用される(今回は時間が足りないので割愛)
 
 - それ以外の型は、空のメソッドセットを持つ
+
+* 型Tがinterface Iを「実装する」とは
+
+型 `T` がinterface `I` のメソッドセットを全て含むこと
+
+.image ./images/implement.jpg 475 900
 
 * interface型のメソッドセット
 
