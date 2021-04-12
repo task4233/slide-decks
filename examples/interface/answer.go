@@ -12,6 +12,7 @@ func (Cat) MakeSound() []byte {
 }
 
 func main() {
-	// Cat構造体はAnimal interfaceを実装していない
+	// Cat型はAnimal interfaceを実装していない
+
 	// var _ Animal = Cat{}
 }
