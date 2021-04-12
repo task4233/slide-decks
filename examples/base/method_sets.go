@@ -1,12 +1,17 @@
-package main
+type Num int
 
-type List []int
+// 型 Num のメソッドセットは
+// - addOneWithValueReceiver
+// - addWithValueReceiver
+func (num Num) addOneWithValueReceiver() { num++ }
 
-// 型 List のメソッドセットはAppendWithValueReceiver
-func (l List) AppendWithValueReceiver(num int) { l = append(l, num) }
+func (num Num) addWithValueReceiver(val int) { num += val }
 
-// 型 *List のメソッドセットはAppendWithPointerReceiverとAppendWithValueReceiver
-func (l *List) AppendWithPointerReceiver(num int) { *l = append(*l, num) }
+// 型 *Numのメソッドセットは
+// - addOneWithPointerReceiver
+// - addWithPointerReceiver
+// - addOneWithValueReceiver
+// - addWithValueReceiver
+func (num *Num) addOneWithPointerReceiver() { *num++ }
 
-func main() {
-}
+func (num *Num) addWithPointerReceiver(val int) { *num += val }
