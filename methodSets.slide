@@ -32,14 +32,14 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 
 * 2種類のレシーバ：ポインタレシーバと値レシーバ
 
-- ポインタレシーバとは、ポインタ型のレシーバのこと(参照渡し)
-- 値レシーバとは、値型のレシーバのこと(値渡し)
+- ポインタレシーバとは、 *ポインタ型のレシーバ* のこと
+- 値レシーバとは、 *値型のレシーバ* のこと
 
 .play ./examples/base/methods.go
 
 * メソッドセットとは
 
-メソッドセットは、型に関連付けられたメソッドの集合のこと
+メソッドセットは、型に関連付けられた *メソッドの集合* のこと
 
 .play ./examples/base/method_sets.go
 
@@ -91,7 +91,7 @@ defined typeかdefined typeを指すポインタを、メソッドのレシー�
 * コラム: メソッド呼び出し時の特別ルール
 x.m()というメソッド呼び出しは、xがaddressableで&xのメソッドセットがmを含んでいる場合、x.m()は(&x).m()の省略形になる
 
-.link https://golang.org/ref/spec#Address_operators Addressable
+.link https://golang.org/ref/spec#Address_operators Address operators - The Go Programming Language Specification
 
 .play ./examples/column/method_call.go
 
