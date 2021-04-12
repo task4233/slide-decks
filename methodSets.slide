@@ -33,14 +33,14 @@ Goの仕様を理解する助けになる
 
 * 2種類のレシーバ：ポインタレシーバと値レシーバ
 
-- ポインタレシーバとは、ポインタ型のレシーバのこと
-- 値レシーバとは、値型のレシーバのこと
+- ポインタレシーバとは、 *ポインタ型のレシーバ* のこと
+- 値レシーバとは、 *値型のレシーバ* のこと
 
 .play ./examples/base/methods.go
 
 * メソッドセットとは
 
-メソッドセットは、型に関連付けられたメソッドの集合のこと
+メソッドセットは、型に関連付けられた *メソッドの集合* のこと
 
 .play ./examples/base/method_sets.go
 
@@ -49,12 +49,6 @@ Goの仕様を理解する助けになる
 型 `T` がinterface `I` のメソッドセットを全て含むこと
 
 .image ./images/implement.jpg 475 900
-
-* interface型のメソッドセット
-
-.play ./examples/interface/example.go
-
-* Goクイズ - interface型のメソッドセット
 
 * メソッドセットの詳細な定義
 
@@ -67,6 +61,12 @@ Goの仕様を理解する助けになる
 - 埋め込みフィールドを持つ構造体については、更なる規則が適用される(今回は時間が足りないので割愛)
 
 - それ以外の型は、空のメソッドセットを持つ
+
+* interface型のメソッドセット
+
+.play ./examples/interface/example.go
+
+* Goクイズ - interface型のメソッドセット
 
 .play ./examples/interface/quiz.go
 
@@ -92,7 +92,7 @@ Goの仕様を理解する助けになる
 * コラム: メソッド呼び出し時の特別ルール
 x.m()というメソッド呼び出しは、xがaddressableで&xのメソッドセットがmを含んでいる場合、x.m()は(&x).m()の省略形になる
 
-.link https://golang.org/ref/spec#Address_operators Addressable
+.link https://golang.org/ref/spec#Address_operators Address operators - The Go Programming Language Specification
 
 .play ./examples/column/method_call.go
 
