@@ -33,8 +33,8 @@ Goの仕様を理解する助けになる
 
 * 2種類のレシーバ：ポインタレシーバと値レシーバ
 
-- 値レシーバ(Value Receiver)とは、 *defined typeのレシーバ* のこと
-- ポインタレシーバ(Pointer Receiver)とは、 *defined typeのポインタ型のレシーバ* のこと
+- 値レシーバ(Value Receiver)とは *defined*typeのレシーバ*
+- ポインタレシーバ(Pointer Receiver)とは *defined*typeのポインタ型のレシーバ*
 
 .play ./examples/base/methods.go
 
@@ -46,7 +46,7 @@ Goの仕様を理解する助けになる
 
 * 型Tがinterface Iを「実装する」とは
 
-型 `T` がinterface `I` のメソッドセットを全て含むこと
+型 `T` のメソッドセットがinterface `I` のメソッドセットを全て含むこと
 
 .image ./images/implement.jpg 475 900
 
@@ -63,6 +63,8 @@ Goの仕様を理解する助けになる
 - それ以外の型は、空のメソッドセットを持つ
 
 * interface型のメソッドセット
+
+- interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
 
 .play ./examples/interface/example.go
 
