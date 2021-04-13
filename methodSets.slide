@@ -101,6 +101,7 @@ Goの仕様を理解する助けになる
 - 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
 
 - *埋め込みフィールドを持つ構造体については、更なる規則が適用される*(今回は時間が足りないので割愛)
+
 - *それ以外の型は、空のメソッドセットを持つ*
 
 * おさらい：インタフェースを「実装する」とは
@@ -117,63 +118,63 @@ Goの仕様を理解する助けになる
 
 .play ./examples/interface/error.go
 
-* Goクイズ - インタフェース型のメソッドセット
+* Goクイズ：インタフェース型のメソッドセット
 
 Cat型はAnimalインタフェースを実装していますか？
 
 .play ./examples/interface/quiz.go
 
-* インタフェース型のメソッドセット - 解答と解説
+* 解答と解説：インタフェース型のメソッドセット
 
 - 返り値が異なっているのでメソッドセットが異なるから実装していない
 - 仮引数リストが異なる場合も同様
 
 .play ./examples/interface/answer.go
 
-* 値レシーバに関するインタフェースの実装
+* おさらい: 型 T のインタフェース実装
 
 .play ./examples/value_receiver/example.go
 
-* Goクイズ - 値レシーバに関するインタフェースの実装
+* Goクイズ：型 T のインタフェース実装
 
 .play ./examples/value_receiver/quiz.go
 
-* 値レシーバに関するインタフェースの実装 - 解答と解説
+* 解答と解説：型 T のインタフェース実装
 
 .play ./examples/value_receiver/answer.go
 
-* コラム: メソッド呼び出し時の特別ルール
+* コラム：メソッド呼び出し時の特別ルール
 x.m()というメソッド呼び出しは、xがaddressableで&xのメソッドセットがmを含んでいる場合、x.m()は(&x).m()の省略形になる
 
 .link https://golang.org/ref/spec#Address_operators Address operators - The Go Programming Language Specification
 
 .play ./examples/column/method_call.go
 
-* ポインタレシーバに関するインタフェースの実装
+* おさらい：型 *T のインタフェースの実装
 
 .play ./examples/pointer_receiver/example.go
 
-* Goクイズ - ポインタレシーバに関するインタフェースの実装
+* Goクイズ：型 *T のインタフェースの実装
 
 .play ./examples/pointer_receiver/quiz.go
 
-* ポインタレシーバに関するインタフェースの実装 - 解答と解説
+* 解答と解説：型 *T のインタフェースの実装
 
 .play ./examples/pointer_receiver/answer.go
 
-* コラム: インタフェースの実装
+* コラム：業務で使えるインタフェースの実装確認
 
 .play ./examples/column/check_implemented.go
 
-* 空のインタフェース
+* おさらい：空のインタフェース
 
 .play ./examples/empty_interface/example.go
 
-* Goクイズ - 空のインタフェース
+* Goクイズ：空のインタフェース
 
 .play ./examples/empty_interface/quiz.go
 
-* 空のインタフェース - 解答と解説
+* 解答と解説：空のインタフェース
 
 - `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
 
@@ -181,7 +182,7 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 .play ./examples/empty_interface/answer.go
 
-* コラム: 空のインタフェースへの代入
+* コラム：空のインタフェースへの代入
 
 .play ./examples/column/empty_interface.go
 
@@ -193,6 +194,6 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 - 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
 
-- 埋め込みフィールドを持つ構造体については、更なる規則が適用される(今回は時間が足りないので割愛)
+- 埋め込みフィールドを持つ構造体については、更なる規則が適用される
 
 - それ以外の型は、空のメソッドセットを持つ
