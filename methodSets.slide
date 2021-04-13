@@ -137,6 +137,8 @@ Cat型はAnimalインタフェースを実装していますか？
 
 * Goクイズ：型 T のインタフェース実装
 
+型 `EmptyError` は、 `error` インタフェースを実装していますか？
+
 .play ./examples/value_receiver/quiz.go
 
 * 解答と解説：型 T のインタフェース実装
@@ -156,6 +158,8 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 * Goクイズ：型 *T のインタフェースの実装
 
+型 `*EmptyError` は、 `error` インタフェースを実装していますか？
+
 .play ./examples/pointer_receiver/quiz.go
 
 * 解答と解説：型 *T のインタフェースの実装
@@ -172,11 +176,13 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 * Goクイズ：空のインタフェース
 
+`nil` は、 `EmptyInterface` を実装していますか？
+
 .play ./examples/empty_interface/quiz.go
 
 * 解答と解説：空のインタフェース
 
-- `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
+- インタフェース以外の型は、デフォルトで空のメソッドセットを持つ
 
 - 空のインタフェースは何もメソッドを含まないので、全ての値を代入可能
 
