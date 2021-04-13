@@ -16,31 +16,32 @@ task4233
 
 .image ./images/go-proposal.PNG 400 682
 
-* ゴールとメリット
+* ゴールと理解するメリット
 *ゴール*
-interfaceを「実装する」という概念を通して、*メソッドセットとは何なのか理解する*
+インタフェースを「実装する」という概念を通して、*メソッドセットとは何なのか*
+*理解すること*
 
-*メリット*
+
+*理解するメリット*
 Goの仕様を理解する助けになる
-(特にMethod callsやInterface typesにおける実装の部分)
 
-.link https://golang.org/ref/spec#Calls Method calls
+.link https://golang.org/ref/spec#Calls Method calls - The Go Programming Language Specification
 
-.link https://golang.org/ref/spec#Interface_types Interface types
+.link https://golang.org/ref/spec#Interface_types Interface types - The Go Programming Language Specification
 
 * おさらい：メソッドとは
 
 - レシーバを持つ関数
 
-.image ./images/method_dif.PNG 400 775
+.image ./images/method_dif.PNG 300 700
 
 * レシーバの型の制約
 
 - レシーバの型は、defined typeもしくはdefined typeのポインタ型でなくてはならない
 - レシーバの型Tおよび*TのTを、receiver base typeと呼ぶ
-- ただしreceiver base typeは、interface型もしくはポインタ型であってはならない
+- ただしreceiver base typeは、インタフェース型もしくはポインタ型であってはならない
 
-.image ./images/method_dif.PNG 400 775
+.image ./images/method_dif.PNG 300 700
 
 * メソッドセットとは
 
@@ -52,7 +53,8 @@ Goの仕様を理解する助けになる
 
 * 型Numのメソッドセット
 
-型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドの集合
+型 `T` のメソッドセットは、*レシーバ型* `T` *で宣言された*
+*全てのメソッドの集合*
 
 .play ./examples/base/method_sets.go
 
@@ -61,7 +63,8 @@ Goの仕様を理解する助けになる
 
 * 型*Numのメソッドセット
 
-型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
+型 `*T` のメソッドセットは、*レシーバ型* `T` *または* `*T` *で宣言された*
+*全てのメソッドの集合*
 
 .play ./examples/base/method_sets.go
 
@@ -70,9 +73,10 @@ Goの仕様を理解する助けになる
 - *A2*
 - *B2*
 
-* interface型 I のメソッドセット
+* インタフェース型 I のメソッドセット
 
-interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
+インタフェース型のメソッドセットは、その *インタフェース定義で列挙される*
+*メソッドの集合*
 
 .play ./examples/base/interface.go
 
@@ -81,16 +85,16 @@ interface型のメソッドセットは、そのinterface定義で列挙され�
 - A2
 - B2
 
-* 型Tがinterface Iを「実装する」とは
+* 型Tがインタフェース Iを「実装する」とは
 
-型 `T` のメソッドセットがinterface `I` のメソッドセットを全て含むこと
+型 `T` のメソッドセットがインタフェース `I` のメソッドセットを全て含むこと
 
 .image ./images/implement.jpg 475 900
 
 
 * メソッドセットの詳細な定義
 
-- interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
+- インタフェース型のメソッドセットは、そのインタフェース定義で列挙されるメソッドの集合
 
 - 型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドの集合
 
@@ -99,28 +103,42 @@ interface型のメソッドセットは、そのinterface定義で列挙され�
 - *埋め込みフィールドを持つ構造体については、更なる規則が適用される*(今回は時間が足りないので割愛)
 - *それ以外の型は、空のメソッドセットを持つ*
 
-* Goクイズ - interface型のメソッドセット
+* おさらい：インタフェースを「実装する」とは
 
-Cat型はAnimal interfaceを実装していますか？
+下記の例で、Cat型はAnimalインタフェースを「実装している」
+
+.play ./examples/interface/example.go
+
+インタフェースを「実装している」型は、そのインタフェース型の変数に代入してもコンパイルエラーにならない
+
+* おさらい：インタフェースを「実装する」とは
+
+下記の例で、Cat型はAnimalインタフェースを「実装していない」ので、代入時にコンパイルエラーになる
+
+.play ./examples/interface/error.go
+
+* Goクイズ - インタフェース型のメソッドセット
+
+Cat型はAnimalインタフェースを実装していますか？
 
 .play ./examples/interface/quiz.go
 
-* interface型のメソッドセット - 解答と解説
+* インタフェース型のメソッドセット - 解答と解説
 
 - 返り値が異なっているのでメソッドセットが異なるから実装していない
 - 仮引数リストが異なる場合も同様
 
 .play ./examples/interface/answer.go
 
-* 値レシーバに関するinterfaceの実装
+* 値レシーバに関するインタフェースの実装
 
 .play ./examples/value_receiver/example.go
 
-* Goクイズ - 値レシーバに関するinterfaceの実装
+* Goクイズ - 値レシーバに関するインタフェースの実装
 
 .play ./examples/value_receiver/quiz.go
 
-* 値レシーバに関するinterfaceの実装 - 解答と解説
+* 値レシーバに関するインタフェースの実装 - 解答と解説
 
 .play ./examples/value_receiver/answer.go
 
@@ -131,45 +149,45 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 .play ./examples/column/method_call.go
 
-* ポインタレシーバに関するinterfaceの実装
+* ポインタレシーバに関するインタフェースの実装
 
 .play ./examples/pointer_receiver/example.go
 
-* Goクイズ - ポインタレシーバに関するinterfaceの実装
+* Goクイズ - ポインタレシーバに関するインタフェースの実装
 
 .play ./examples/pointer_receiver/quiz.go
 
-* ポインタレシーバに関するinterfaceの実装 - 解答と解説
+* ポインタレシーバに関するインタフェースの実装 - 解答と解説
 
 .play ./examples/pointer_receiver/answer.go
 
-* コラム: interfaceの実装
+* コラム: インタフェースの実装
 
 .play ./examples/column/check_implemented.go
 
-* 空のinterface
+* 空のインタフェース
 
 .play ./examples/empty_interface/example.go
 
-* Goクイズ - 空のinterface
+* Goクイズ - 空のインタフェース
 
 .play ./examples/empty_interface/quiz.go
 
-* 空のinterface - 解答と解説
+* 空のインタフェース - 解答と解説
 
 - `interface` 以外の型は、デフォルトで空のメソッドセットを持つ
 
-- 空のinterfaceは何もメソッドを含まないので、全ての値を代入可能
+- 空のインタフェースは何もメソッドを含まないので、全ての値を代入可能
 
 .play ./examples/empty_interface/answer.go
 
-* コラム: 空のinterfaceへの代入
+* コラム: 空のインタフェースへの代入
 
 .play ./examples/column/empty_interface.go
 
 * まとめ
 
-- interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
+- インタフェース型のメソッドセットは、そのインタフェース定義で列挙されるメソッドの集合
 
 - 型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドの集合
 

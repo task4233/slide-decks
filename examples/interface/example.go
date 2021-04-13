@@ -1,5 +1,7 @@
 package main
 
+var _ Animal = Cat{}
+
 type Animal interface {
 	MakeSound() string
 }
@@ -11,7 +13,4 @@ func (Cat) MakeSound() string {
 	return "meow"
 }
 
-func main() {
-	// Cat型はAnimal interfaceを実装している
-	var _ Animal = Cat{}
-}
+func main() {}
