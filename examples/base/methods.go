@@ -4,9 +4,11 @@ import "fmt"
 
 type Num int
 
-func (num Num) addOneWithValue() { num++ }
+// List型のレシーバなので値レシーバ
+func (l List) AppendWithValueReceiver(num int) { l = append(l, num) }
 
-func (num *Num) addOneWithPointer() { *num++ }
+// *List型のレシーバなのでポインタレシーバ
+func (l *List) AppendWithPointerReceiver(num int) { *l = append(*l, num) }
 
 func main() {
 	num := Num(2)
