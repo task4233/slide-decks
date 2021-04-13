@@ -27,7 +27,14 @@ Goの仕様を理解する助けになる
 * おさらい：メソッドとは
 
 - レシーバを持つ関数
-- レシーバになれるのは、defined typeもしくはdefined typeのポインタ型
+
+.image ./images/method_dif.PNG 400 775
+
+* レシーバの型の制約
+
+- レシーバの型は、defined typeもしくはdefined typeのポインタ型でなくてはならない
+- レシーバの型Tおよび*TのTを、receiver base typeと呼ぶ
+- ただしreceiver base typeは、interface型もしくはポインタ型であってはならない
 
 .image ./images/method_dif.PNG 400 775
 
