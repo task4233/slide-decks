@@ -89,7 +89,7 @@ Goの仕様を理解する助けになる
 
 型 `T` のメソッドセットがインタフェース `I` のメソッドセットを全て含むこと
 
-.image ./images/implement.jpg 475 900
+.image ./images/implemented.png 290 900
 
 
 * メソッドセットの詳細な定義
