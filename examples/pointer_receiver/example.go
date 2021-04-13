@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+var _ error = &EmptyError{}
+
 type error interface {
 	Error() string
 }
@@ -14,7 +16,4 @@ func (e *EmptyError) Error() string {
 	return fmt.Sprintf("%s is empty", e.FieldName)
 }
 
-func main() {
-	// EmptyError型は、Error メソッドを実装している？
-	var _ error = &EmptyError{}
-}
+func main() {}

@@ -1,7 +1,7 @@
 package main
 
-type EmptyInterface interface{}
+type Empty interface{}
 
 func main() {
-	var _ EmptyInterface = nil
+	var _ Empty = nil
 }

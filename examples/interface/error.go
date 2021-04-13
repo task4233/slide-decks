@@ -6,7 +6,6 @@ type Animal interface {
 	MakeSound() string
 }
 
-type Cat struct {
-}
+type Cat struct{}
 
 func main() {}

@@ -6,8 +6,7 @@ type Animal interface {
 	MakeSound() string
 }
 
-type Cat struct {
-}
+type Cat struct{}
 
 func (Cat) MakeSound() []byte {
 	return []byte("meow")

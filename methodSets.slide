@@ -133,6 +133,9 @@ Cat型はAnimalインタフェースを実装していますか？
 
 * おさらい: 型 T のインタフェース実装
 
+- 型 `EmptyError` は `error` インタフェースを「実装している」
+- 型 `EmptyError` と `error` インタフェースのメソッドセットは共に `Error` (同値)
+
 .play ./examples/value_receiver/example.go
 
 * Goクイズ：型 T のインタフェース実装
@@ -142,6 +145,10 @@ Cat型はAnimalインタフェースを実装していますか？
 .play ./examples/value_receiver/quiz.go
 
 * 解答と解説：型 T のインタフェース実装
+
+- 型 `EmptyError` は `error` インタフェースを「実装していない」
+- 型 `EmptyError` のメソッドセットは空
+- `error` インタフェースのメソッドセットは `Error`
 
 .play ./examples/value_receiver/answer.go
 
@@ -154,6 +161,9 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 * おさらい：型 *T のインタフェースの実装
 
+- 型 `*EmptyError` は `error` インタフェースを「実装している」
+- 型 `*EmptyError` と `error` インタフェースのメソッドセットは共に `Error` (同値)
+
 .play ./examples/pointer_receiver/example.go
 
 * Goクイズ：型 *T のインタフェースの実装
@@ -164,6 +174,10 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 * 解答と解説：型 *T のインタフェースの実装
 
+- 型 `EmptyError` は `error` インタフェースを「実装している」
+- 型 `EmptyError` のメソッドセットは `Error`
+- `error` インタフェースのメソッドセットは `Error`
+
 .play ./examples/pointer_receiver/answer.go
 
 * コラム：業務で使えるインタフェースの実装確認
@@ -172,19 +186,23 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 * おさらい：空のインタフェース
 
+- 型 `T` は `Empty` インタフェースを「実装している」
+- `Empty` インタフェースのメソッドセットは空
+- 型 `T` のメソッドセットは `Hello`
+
 .play ./examples/empty_interface/example.go
 
 * Goクイズ：空のインタフェース
 
-`nil` は、 `EmptyInterface` を実装していますか？
+`nil` は、 `Empty` インタフェースを実装していますか？
 
 .play ./examples/empty_interface/quiz.go
 
 * 解答と解説：空のインタフェース
 
-- インタフェース以外の型は、デフォルトで空のメソッドセットを持つ
+- インタフェース以外の全ての型は、デフォルトで空のメソッドセットを持つ
 
-- 空のインタフェースは何もメソッドを含まないので、全ての値を代入可能
+- 空のインタフェースは空のメソッドセットを持つので、全ての型の値を代入可能
 
 .play ./examples/empty_interface/answer.go
 
@@ -193,6 +211,10 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 .play ./examples/column/empty_interface.go
 
 * まとめ
+
+- 全ての型はデフォルトで空のメソッドセットを持つ
+
+メソッドセットの定義
 
 - インタフェース型のメソッドセットは、そのインタフェース定義で列挙されるメソッドの集合
 
