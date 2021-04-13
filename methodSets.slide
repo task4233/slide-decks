@@ -38,13 +38,6 @@ Goの仕様を理解する助けになる
 
 .image ./images/method_dif.PNG 400 775
 
-* 2種類のレシーバ：ポインタレシーバと値レシーバ
-
-- 値レシーバ(Value Receiver)とは *defined*typeのレシーバ*
-- ポインタレシーバ(Pointer Receiver)とは *defined*typeのポインタ型のレシーバ*
-
-.play ./examples/base/methods.go
-
 * メソッドセットとは
 
 メソッドセットは、型に関連付けられた *メソッドの集合* のこと
