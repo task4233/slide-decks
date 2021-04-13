@@ -42,13 +42,47 @@ Goの仕様を理解する助けになる
 
 メソッドセットは、型に関連付けられた *メソッドの集合* のこと
 
+下記の例で、メソッドセットについて考えてみます
+
 .play ./examples/base/method_sets.go
+
+* 型Numのメソッドセット
+
+型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドの集合
+
+.play ./examples/base/method_sets.go
+
+- *A1*
+- *B1*
+
+* 型*Numのメソッドセット
+
+型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
+
+.play ./examples/base/method_sets.go
+
+- A1
+- B1
+- *A2*
+- *B2*
+
+* interface型 I のメソッドセット
+
+interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
+
+.play ./examples/base/interface.go
+
+- A1
+- B1
+- A2
+- B2
 
 * 型Tがinterface Iを「実装する」とは
 
 型 `T` のメソッドセットがinterface `I` のメソッドセットを全て含むこと
 
 .image ./images/implement.jpg 475 900
+
 
 * メソッドセットの詳細な定義
 
@@ -58,17 +92,12 @@ Goの仕様を理解する助けになる
 
 - 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
 
-- 埋め込みフィールドを持つ構造体については、更なる規則が適用される(今回は時間が足りないので割愛)
-
-- それ以外の型は、空のメソッドセットを持つ
-
-* interface型のメソッドセット
-
-- interface型のメソッドセットは、そのinterface定義で列挙されるメソッドの集合
-
-.play ./examples/interface/example.go
+- *埋め込みフィールドを持つ構造体については、更なる規則が適用される*(今回は時間が足りないので割愛)
+- *それ以外の型は、空のメソッドセットを持つ*
 
 * Goクイズ - interface型のメソッドセット
+
+Cat型はAnimal interfaceを実装していますか？
 
 .play ./examples/interface/quiz.go
 
