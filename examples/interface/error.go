@@ -9,8 +9,4 @@ type Animal interface {
 type Cat struct {
 }
 
-func (Cat) MakeSound() []byte {
-	return []byte("meow")
-}
-
 func main() {}
