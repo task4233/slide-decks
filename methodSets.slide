@@ -74,8 +74,6 @@ Goの仕様を理解する助けになる
 - *A2*
 - *B2*
 
-* 注意：メソッドセットを考える時は、レシーバ型ではなく
-
 * インタフェース型 I のメソッドセット
 
 インタフェース型のメソッドセットは、その *インタフェース定義で列挙される*
@@ -137,7 +135,7 @@ Cat型はAnimalインタフェースを実装していますか？
 * おさらい: 型 T のインタフェース実装
 
 - 型 `EmptyError` は `error` インタフェースを「実装している」
-- 型 `EmptyError` と `error` インタフェースのメソッドセットは共に `Error` (同値)
+- 型 `EmptyError` と `error` インタフェースのメソッドセットは共に `Error` メソッドのみを含む(同値)
 
 .play ./examples/value_receiver/example.go
 
@@ -165,7 +163,7 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 * おさらい：型 *T のインタフェースの実装
 
 - 型 `*EmptyError` は `error` インタフェースを「実装している」
-- 型 `*EmptyError` と `error` インタフェースのメソッドセットは共に `Error` (同値)
+- 型 `*EmptyError` と `error` インタフェースのメソッドセットは共に `Error` メソッドのみを含む(同値)
 
 .play ./examples/pointer_receiver/example.go
 

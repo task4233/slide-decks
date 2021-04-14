@@ -6,7 +6,7 @@ type EmptyError struct {
 	FieldName string
 }
 
-func (e EmptyError) Error() string {
+func (e *EmptyError) Error() string {
 	return fmt.Sprintf("%s is empty", e.FieldName)
 }
 
