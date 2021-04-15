@@ -31,7 +31,7 @@ Goの他の仕様を理解する助けになる
 
 * おさらい：メソッドとは
 
-レシーバを持つ関数
+レシーバを伴う関数
 
 .image ./images/method_dif.PNG 300 700
 
@@ -141,15 +141,6 @@ Cat型はAnimalインタフェースを実装していますか？
 
 * 2. 型 T のインタフェース実装
 
-型 `T` のメソッドセットは、レシーバ型 `T` で宣言された全てのメソッドの集合
-
-* おさらい: 型 T のインタフェース実装
-
-- 型 `EmptyError` は `error` インタフェースを「実装している」
-- 型 `EmptyError` と `error` インタフェースのメソッドセットは共に `Error` メソッドのみを含む(同値)
-
-.play ./examples/value_receiver/example.go
-
 * Goクイズ：型 T のインタフェース実装
 
 型 `EmptyError` は、 `error` インタフェースを実装していますか？
@@ -165,7 +156,7 @@ Cat型はAnimalインタフェースを実装していますか？
 .play ./examples/value_receiver/answer.go
 
 * コラム：メソッド呼び出し時の特別ルール
-x.m()というメソッド呼び出しは、xがaddressableで&xのメソッドセットがmを含んでいる場合、x.m()は(&x).m()の省略形になる
+x.m()というメソッド呼び出しについて、 *xがaddressable* で *&xのメソッドセットがmを含んでいる* 場合 、x.m()は(&x).m()の省略形になる
 
 .link https://golang.org/ref/spec#Address_operators Address operators - The Go Programming Language Specification
 
@@ -174,13 +165,6 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 * 3. 型 *T のインタフェース実装
 
 型 `*T` のメソッドセットは、レシーバ型 `T` または `*T` で宣言された全てのメソッドの集合
-
-* おさらい：型 *T のインタフェースの実装
-
-- 型 `*EmptyError` は `error` インタフェースを「実装している」
-- 型 `*EmptyError` と `error` インタフェースのメソッドセットは共に `Error` メソッドのみを含む(同値)
-
-.play ./examples/pointer_receiver/example.go
 
 * Goクイズ：型 *T のインタフェースの実装
 
@@ -196,21 +180,9 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 .play ./examples/pointer_receiver/answer.go
 
-* コラム：業務で使えるインタフェースの実装確認
-
-.play ./examples/column/check_implemented.go
-
 * 4. 空のインタフェース実装
 
 どんな型でも、デフォルトで空のメソッドセットを持つ
-
-* おさらい：空のインタフェース
-
-- 型 `T` は `Empty` インタフェースを「実装している」
-- `Empty` インタフェースのメソッドセットは空
-- 型 `T` のメソッドセットは `Hello`
-
-.play ./examples/empty_interface/example.go
 
 * Goクイズ：空のインタフェース
 
@@ -226,7 +198,7 @@ x.m()というメソッド呼び出しは、xがaddressableで&xのメソッド�
 
 .play ./examples/empty_interface/answer.go
 
-* コラム：空のインタフェースへの代入
+* コラム：interfaceの値を利用するためには型アサーションが必要
 
 .play ./examples/column/empty_interface.go
 

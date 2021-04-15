@@ -1,18 +1,17 @@
 package main
 
-import "fmt"
-
-type EmptyError struct {
-	FieldName string
+type error interface {
+	Error() string
 }
 
+type EmptyError struct{}
+
 func (e *EmptyError) Error() string {
-	return fmt.Sprintf("%s is empty", e.FieldName)
+	return "empty"
 }
 
 func main() {
-	var emptyError EmptyError = EmptyError{FieldName: "hoge"}
-
-	// (&emptyError).Error() と同義
-	fmt.Println(emptyError.Error())
+	var emptyError EmptyError
+	// 内部的に(&emptyError).Error() と同義
+	emptyError.Error()
 }
