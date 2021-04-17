@@ -188,7 +188,7 @@ x.m()というメソッド呼び出しについて、 *xがaddressable* で *&x�
 
 * Goクイズ：空のインタフェース
 
-`nil` は、 `Empty` インタフェースを実装していますか？
+`57` は、 `Empty` インタフェースを実装していますか？
 
 .play ./examples/empty_interface/quiz.go
 
